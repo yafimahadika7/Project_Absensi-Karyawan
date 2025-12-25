@@ -190,13 +190,22 @@ ob_start();
 
                         <?php foreach ($rowsView as $r): ?>
                             <?php
-                            $badge = match ($r['status']) {
-                                'hadir' => 'bg-success',
-                                'izin' => 'bg-warning text-dark',
-                                'cuti' => 'bg-primary',
-                                'sakit' => 'bg-info text-dark',
-                                default => 'bg-secondary'
-                            };
+                            switch ($r['status']) {
+                                case 'hadir':
+                                    $badge = 'bg-success';
+                                    break;
+                                case 'izin':
+                                    $badge = 'bg-warning text-dark';
+                                    break;
+                                case 'cuti':
+                                    $badge = 'bg-primary';
+                                    break;
+                                case 'sakit':
+                                    $badge = 'bg-info text-dark';
+                                    break;
+                                default:
+                                    $badge = 'bg-secondary';
+                            }
                             ?>
                             <tr>
                                 <td><?= date('d-m-Y', strtotime($r['tanggal'])) ?></td>
