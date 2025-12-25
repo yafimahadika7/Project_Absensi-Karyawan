@@ -165,11 +165,16 @@ ob_start();
 
                         <?php while ($i = mysqli_fetch_assoc($izin)): ?>
                             <?php
-                            $badge = match ($i['jenis']) {
-                                'cuti' => 'bg-primary',
-                                'sakit' => 'bg-danger',
-                                default => 'bg-warning text-dark'
-                            };
+                            switch ($i['jenis']) {
+                                case 'cuti':
+                                    $badge = 'bg-primary';
+                                    break;
+                                case 'sakit':
+                                    $badge = 'bg-danger';
+                                    break;
+                                default:
+                                    $badge = 'bg-warning text-dark';
+                            }
                             ?>
                             <tr>
                                 <td>
