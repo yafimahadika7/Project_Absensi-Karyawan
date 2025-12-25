@@ -107,13 +107,26 @@ ob_start();
 
                             $status = $row['status'] ?? 'belum absen';
 
-                            $badge = match ($status) {
-                                'hadir' => 'bg-success',
-                                'izin' => 'bg-warning text-dark',
-                                'cuti' => 'bg-primary',
-                                'sakit' => 'bg-danger',
-                                default => 'bg-secondary'
-                            };
+                            switch ($status) {
+                                case 'hadir':
+                                    $badge = 'bg-success';
+                                    break;
+
+                                case 'izin':
+                                    $badge = 'bg-warning text-dark';
+                                    break;
+
+                                case 'cuti':
+                                    $badge = 'bg-primary';
+                                    break;
+
+                                case 'sakit':
+                                    $badge = 'bg-danger';
+                                    break;
+
+                                default:
+                                    $badge = 'bg-secondary';
+                            }
                             ?>
 
                             <tr>
